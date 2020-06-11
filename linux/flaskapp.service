@@ -6,7 +6,7 @@ After=network.target
 User=webdev
 Group=webdev
 WorkingDirectory=/var/www/flaskapp
-ExecStart=uwsgi --ini myproject.ini
+ExecStart=UWSGIAPP --ini myproject.ini
 
 [Install]
 WantedBy=multi-user.target
