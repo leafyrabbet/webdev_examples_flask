@@ -1,3 +1,1 @@
-UWSGIAPP=`which uwsgi`
-
-sed 's/UWSGIAPP/${UWSGIAPP}/g' /etc/systemd/system/flaskapp.service
+mv flaskapp_built.service /etc/systemd/system/flaskapp.service
