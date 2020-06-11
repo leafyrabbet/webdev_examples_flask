@@ -6,7 +6,7 @@ After=network.target
 User=USERUSER
 Group=USERGROUP
 WorkingDirectory=/var/www/flaskapp
-ExecStart=UWSGIAPP --ini myproject.ini
+ExecStart=UWSGIAPP --ini flask_app.ini
 
 [Install]
 WantedBy=multi-user.target
