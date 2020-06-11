@@ -57,6 +57,12 @@ This is a useful way to develop locally and do the simplest test-run of the `fla
 
 ## Run uWSGI Locally
 
+Running `uwsgi` locally requires that the `uwsgi` package has been installed in the current Python environment. As mentioned up above, you'll want to first use `pyenv activate [VIRTUALENV_ALIAS]` with your custom `[VIRTUALENV_ALIAS]` (_e.g._, `py38`) before doing any of the following.
+
+This is likely the preferred testing approach to make sure that everything is working in the code and in the environment, before moving on to the Nginx Deployment approaches.
+
+### Commandline Approach
+
 The `uWSGI` utility can setup an intermediary server that supports multiple-access instead of the single-access approach if you were to just use `flask` directly.
 
 To test this, you can use the following command:
@@ -73,6 +79,20 @@ These are, of course, configurable, but need to coordinate Python import/path ac
 
 - `MODULE_NAME`: `flask_app`
 - `FLASK_ALIAS`: `app`
+
+### Helper-Script Approach
+
+For convenience, we can also install the files to an `opt` directory and test `uWSGI` locally with the macOS helper scripts, by doing the following (assuming you've `cd`-ed into this top-level repo directory):
+
+```bash
+cd ./macos;
+./install.sh;
+./run_ex_uwsgi.sh;
+```
+
+### Stopping Server
+
+After you've tested the `uWSGI` utility's server, or if you notice an error you need to fix, you can stop the app with `CTRL+C` (`[^C]`) to send the `SIGTERM` signal. This will only work as long as `uwsgi` is in the foreground. If you added `&` to any of the commands to move it to the background, then you'll need to use `pgrep` or `ps` to figure out and kill the process, or use `fg` to move it to the foreground before you can send `SIGTERM`.
 
 ## Run behind Nginx on macOS
 
