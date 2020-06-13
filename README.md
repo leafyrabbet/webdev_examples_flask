@@ -98,3 +98,40 @@ After you've tested the `uWSGI` utility's server, or if you notice an error you 
 
 
 ## Run behind Nginx on Linux
+
+On a Linux system you'll need an accessible Python installation and an accessible Nginx installation. This tutorial/example also shows how to rely on `systemd` through the `systemctl` utility to manage the `uswgi` and `nginx` apps.
+
+
+
+
+## References
+
+These are the reference links that we used to build this example project and where we found troubleshooting information for the nuances of `systemd`, `launchd`, `uwsgi`, and accessing `pyenv`.
+
+### Overall Project
+
+- https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uswgi-and-nginx-on-ubuntu-18-04
+- https://github.com/tiangolo/uwsgi-nginx-flask-docker
+
+### uWSGI
+
+- https://uwsgi-docs.readthedocs.io/en/latest/WSGIquickstart.html
+- https://stackoverflow.com/questions/21669354/rebuild-uwsgi-with-pcre-support
+- https://stackoverflow.com/questions/20176959/uwsgi-no-request-plugin-is-loaded-you-will-not-be-able-to-manage-requests
+
+### Scripting
+
+- https://stackoverflow.com/questions/9366816/sed-fails-with-unknown-option-to-s-error
+- https://unix.stackexchange.com/questions/379572/escaping-both-forward-slash-and-back-slash-with-sed
+- https://stackoverflow.com/questions/3327013/how-to-determine-the-current-shell-im-working-on
+
+### macOS launchd/launchctl
+
+- https://stackoverflow.com/questions/34215527/what-does-launchd-status-78-mean-why-my-user-agent-not-running
+- https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html
+- https://alvinalexander.com/mac-os-x/mac-osx-startup-crontab-launchd-jobs/
+- https://alvinalexander.com/mac-os-x/launchd-examples-launchd-plist-file-examples-mac/
+
+### Linux systemd/systemctl
+
+
