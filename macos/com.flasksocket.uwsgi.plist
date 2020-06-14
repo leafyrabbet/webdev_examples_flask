@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.flasksocket.uwsgi</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>bash</string>
+        <string>-c</string>
+        <string>/usr/local/bin/uwsgi --ini /usr/local/opt/flaskapp/flask_app.ini</string>
+    </array>
+    <key>StandardOutPath</key>
+    <string>/usr/local/var/log/flaskapp.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/usr/local/var/log/flaskapp.err.log</string>
+    <key>SoftResourceLimits</key>
+    <dict>
+        <key>Core</key>
+        <integer>9223372036854775807</integer>
+    </dict>
+    <key>HardResourceLimits</key>
+    <dict>
+        <key>Core</key>
+        <integer>9223372036854775807</integer>
+    </dict>
+</dict>
+</plist>
