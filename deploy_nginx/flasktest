@@ -1,0 +1,27 @@
+# @file
+# @brief Nginx Configuration File for uWSGI Socketfile
+#
+# @author tommy vegetables <leafyrabbet@gmail.com>
+# @copyright 2020, TenonGarden Productions
+
+server {
+   # HTTP Configuration
+   listen 80;                       # IPv4
+   listen [::]:80;                  # IPv6
+   server_name www.flasktest.com;   # Set your registered (CNAME) domain name(s)
+
+   # # HTTPS Configuration (SSL)
+   # listen 443 ssl;
+   # listen [::]:443 ssl;
+   # ssl_certificate /etc/letsencrypt/live/DOMAINNAME/fullchain.pem;    # Change DOMAINNAME
+   # ssl_certificate_key /etc/letsencrypt/live/DOMAINNAME/privkey.pem;  # Change DOMAINNAME
+
+   location / {
+      try_files $uri @flasktest;
+   }
+
+   location @flasktest {
+      include uwsgi_params;
+      uwsgi_pass unix://INSTALLDIR/SOCKETNAME;
+   }
+}
