@@ -1,3 +1,9 @@
+# @file
+# @brief ...
+#
+# @author tommy vegetables <leafyrabbet@gmail.com>
+# @copyright 2020, TenonGarden Productions
+
 import datetime
 import pystache
 from flask import Flask
