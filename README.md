@@ -9,8 +9,8 @@ An example webpage running in Python with Flask for HTTP processing/handling.
 System ("Environment") setup:
 
 ```bash
-pyenv install 3.8.2;
-pyenv virtualenv 3.8.2 py38;  # `py38` is a custom name, choose your own...
+env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.8.3;
+pyenv virtualenv 3.8.3 py38;  # `py38` is a custom name, choose your own...
 pip install --upgrade pip;
 pip install --upgrade poetry;
 ```
@@ -33,7 +33,7 @@ If you want a separate environment where you don't need to reinstall `poetry`, b
 
 ```bash
 cd </PATH/TO>/leafyrabbet/webdev_examples_flask/;
-pyenv virtualenv 3.8.2 py38alt;  # New custom name for environment.
+pyenv virtualenv 3.8.3 py38alt;  # New custom name for environment.
 pyenv activate py38alt;          # Switch to the new environment.
 poetry install;
 ```
@@ -134,4 +134,9 @@ These are the reference links that we used to build this example project and whe
 
 ### Linux systemd/systemctl
 
+- ...
 
+### Nginx
+
+- https://github.com/tiangolo/uwsgi-nginx-flask-docker/issues/36
+- ...
