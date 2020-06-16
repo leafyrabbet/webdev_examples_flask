@@ -1,6 +1,29 @@
 # Flask Website Example
 
-An example webpage running in Python with Flask for HTTP processing/handling.
+An example webpage running in Python with Flask (behind Nginx) for HTTP processing/handling on a Linux server (Debian/Ubuntu with `apt`).
+
+While most of the Linux-specific commands rely on `bash` and `apt`, these can be used as references for other deployments, like Arch/Manjaro with `pacman`, and such.
+
+Ultimately, this project should help provide the following setup:
+
+```
+HTTP GET: | Client | -> DNS -> Internet -> | Nginx -> uwsgi -> flask |
+RESPONSE: | Client |    <- Internet <-     | Nginx <- uwsgi <- flask |
+```
+
+Where Nginx, uWSGI (`uwsgi`), and Flask (Python) are all running on your webserver (Linux computer with IP Address).
+
+To facilitate the webpage design, we're using Mustache template files and `pystache` to integrate the templating into the `flask` API code developed in the Python source module(s).
+
+Another approach here is to use raw HTML files, with embedded CSS and JS, as desired, or to generate a Front-End UI codebase of static files from a JS-based framework (React.js, Vue.js, Angular.js, etc.) and use the `flask` app for endpoint routing and providing the HTTP API.
+
+This project also provides deployment scripts, including scripts to generate SSL/TLS Certificates.
+
+Everything here is provided for educational purposes, so you'll need to customize the scripts and code files to your specific circumstances, but this should provide basically a starting-point for deploying your own site.
+
+Using `uwsgi`, `flask`, and `nginx` are not necessarily the "best" choices for hosting a website, but the relative simplicity provides a lot of benefits and educational opportunities for understanding web protocols.
+
+In a separate repository we'll consider a similar approach but using [FastAPI](https://fastapi.tiangolo.com/), to compare.
 
 # Setup
 
@@ -94,15 +117,9 @@ cd ./macos;
 
 After you've tested the `uWSGI` utility's server, or if you notice an error you need to fix, you can stop the app with `CTRL+C` (`[^C]`) to send the `SIGTERM` signal. This will only work as long as `uwsgi` is in the foreground. If you added `&` to any of the commands to move it to the background, then you'll need to use `pgrep` or `ps` to figure out and kill the process, or use `fg` to move it to the foreground before you can send `SIGTERM`.
 
-## Run behind Nginx on macOS
-
-
 ## Run behind Nginx on Linux
 
 On a Linux system you'll need an accessible Python installation and an accessible Nginx installation. This tutorial/example also shows how to rely on `systemd` through the `systemctl` utility to manage the `uswgi` and `nginx` apps.
-
-
-
 
 ## References
 
@@ -124,13 +141,6 @@ These are the reference links that we used to build this example project and whe
 - https://stackoverflow.com/questions/9366816/sed-fails-with-unknown-option-to-s-error
 - https://unix.stackexchange.com/questions/379572/escaping-both-forward-slash-and-back-slash-with-sed
 - https://stackoverflow.com/questions/3327013/how-to-determine-the-current-shell-im-working-on
-
-### macOS launchd/launchctl
-
-- https://stackoverflow.com/questions/34215527/what-does-launchd-status-78-mean-why-my-user-agent-not-running
-- https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html
-- https://alvinalexander.com/mac-os-x/mac-osx-startup-crontab-launchd-jobs/
-- https://alvinalexander.com/mac-os-x/launchd-examples-launchd-plist-file-examples-mac/
 
 ### Linux systemd/systemctl
 
